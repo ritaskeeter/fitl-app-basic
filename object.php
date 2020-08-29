@@ -35,7 +35,7 @@ elseif ($id_value == 2) {
 	$object = array(
 		'title' => 'My Programming Question #2',
 		'question' => 'My HTML list code does not display correctly',
-		'description' => 'I\'m trying to display a list but I\'m not sure if it is correct. Can you help?',
+		'description' => 'I\'m trying to display a list using HTML but I\'m not sure if it is correct. Can you help?',
 		'code' => '&lt;ul&gt;
 					item 1
 					item 2
