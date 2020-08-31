@@ -14,36 +14,50 @@ $object = array(
 	'question' =>'',
 	'description' =>'',
 	'code' =>'',
-	'date' =>'',
+	'submitted_at' =>'',
 );
+
+//CONNECTING TO THE DATABASE
+//Database Credentials
+$servername = 'localhost';
+$username = 'homestead';
+$password = 'secret';
+
+//Creating a connection
+$connection = new mysqli ($servername, $username, $password);
+
+//Check for an error
+if($connection->connect_error){
+	echo 'Connection failed: ' .$connection->connect_error;
+	exit;
+}
+
+//If no error, then display success message
+//echo 'Connected successfully';
+
+//Connect to the specific database
+$connection->select_db('fitl');
+
+//Query to select the object from the database
+$sql = 'SELECT * FROM questions WHERE id = '.$id_value;
+
+//Execute the query
+$result = $connection->query($sql);
+
+//Check if object exists(has values) and then retrieve it
+if($result->num_rows>0){
+	$object = $result->fetch_assoc(); //returns values of the object
+	/*
+	echo '<pre>';
+	print_r($object);
+	echo '</pre>';
+	*/
+}
 
 //We will use the IDs in the URL to differentiate the users
 //and display the page with data specific to each user/object
 
 //For this we will use if and elseif
-if ($id_value == 1) {
-	$object = array(
-		'title' =>'My Programming Question #1',
-		'question' => 'I have a question on displaying an alert',
-		'description' => 'I\'m trying to display an alert box but it does not work. This is what I have managed to do till now. Can you help?',
-		'code' => 'Alert(My message)',
-		'date' => 'July 1st, 2020',
-	);
-}
-
-elseif ($id_value == 2) {
-	$object = array(
-		'title' => 'My Programming Question #2',
-		'question' => 'My HTML list code does not display correctly',
-		'description' => 'I\'m trying to display a list using HTML but I\'m not sure if it is correct. Can you help?',
-		'code' => '&lt;ul&gt;
-					item 1
-					item 2
-					item 3
-				&lt;/ul&gt;',
-		'date' => 'August 1st, 2020',
-	);
-}
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +77,6 @@ elseif ($id_value == 2) {
 			<pre>
 				<?php echo $object['code']; ?>
 			</pre>
-		<p>Question Date: <?php echo $object['date']; ?></p>
+		<p>Question Date: <?php echo $object['submitted_at']; ?></p>
 	</body>
 </html>
