@@ -9,13 +9,6 @@ $id_value = $_REQUEST['id'];
 //the ones specified in the code condition below.
 
 //For example https://fitl-app-basic.local/object.php?id=4
-$object = array(
-	'title' =>'',
-	'question' =>'',
-	'description' =>'',
-	'code' =>'',
-	'submitted_at' =>'',
-);
 
 //CONNECTING TO THE DATABASE
 //Database Credentials
@@ -59,7 +52,6 @@ if($result->num_rows>0){
 
 //For this we will use if and elseif
 ?>
-
 <!DOCTYPE html>
 <html>
 

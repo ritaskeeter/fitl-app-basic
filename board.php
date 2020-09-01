@@ -24,7 +24,7 @@ if($connection->connect_error){
 	exit;
 }
 
-echo 'Connection successful';
+//echo 'Connection successful';
 
 //Connect to database
 $connection->select_db('fitl');
@@ -39,41 +39,6 @@ $result = $connection->query($sql);
 if($result->num_rows>0){
 	$object = $result->fetch_assoc();
 }
-
-/*
-if($id == 1) {
-	$object = array(
-		'name' => 'Sona',
-		'status' => 'Online',
-		'scheduled_calls' => '12:00pm to 2:30pm',
-		'call_notes' => 'Implementation',
-		'sessions' => '4:00pm to 6:00pm', 
-		'session_notes' => 'Training',
-	);
-}
-
-elseif($id == 2) {
-	$object = array(
-		'name' => 'Subro',
-		'status' => 'Online',
-		'scheduled_calls' => '1:00pm to 2:00pm',
-		'call_notes' => 'Onboarding',
-		'sessions' => '3:30pm to 4:00pm', 
-		'session_notes' => 'Process Management',
-	);
-}
-
-else {
-	$object = array(
-		'name' => 'User',
-		'status' => '',
-		'scheduled_calls' => '',
-		'call_notes' => '',
-		'sessions' => '', 
-		'session_notes' => '',
-	);
-}
-*/
 
 ?>
 
