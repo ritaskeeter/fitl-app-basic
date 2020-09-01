@@ -3,12 +3,19 @@
 //the ID value(or user/object) since the variable will be included in the URL
 
 //For example: https://fitl-app-basic/local.php?id=value
-$id_value = $_REQUEST['id'];
+$id = $_REQUEST['id'];
 
 //To display empty values when the URL contains an ID variable with a value other than
 //the ones specified in the code condition below.
 
 //For example https://fitl-app-basic.local/object.php?id=4
+$object = array(
+	'title' => '',
+	'question' => '',
+	'description' => '',
+	'code' => '',
+	'submitted_at' => '',
+);
 
 //CONNECTING TO THE DATABASE
 //Database Credentials
@@ -32,7 +39,7 @@ if($connection->connect_error){
 $connection->select_db('fitl');
 
 //Query to select the object from the database
-$sql = 'SELECT * FROM questions WHERE id = '.$id_value;
+$sql = 'SELECT * FROM questions WHERE id = '.$id;
 
 //Execute the query
 $result = $connection->query($sql);
@@ -46,7 +53,6 @@ if($result->num_rows>0){
 	echo '</pre>';
 	*/
 }
-
 //We will use the IDs in the URL to differentiate the users
 //and display the page with data specific to each user/object
 
